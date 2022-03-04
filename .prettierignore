@@ -1,7 +1,5 @@
 /*
-!/pages
-!/test
-!/components
+!src
 !.prettierrc.json
 !package.json
 !.tsconfig.json
