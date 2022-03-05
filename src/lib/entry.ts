@@ -7,25 +7,39 @@ import html from 'remark-html';
 
 const contentDir = path.join(process.cwd(), 'content');
 
-type EntryMatter = {
+export type EntryMatter = {
   title: string;
-  date: Date;
+  createdAt: Date;
   category: string;
   content: string;
 };
-type Entry = EntryMatter & { id: string };
-type EntryWithHtml = Entry & { contentHtml: string };
+export type EntryPathParams = {
+  date: string;
+  slug: string;
+};
+export type Entry = EntryMatter & EntryPathParams;
+export type EntryWithHtml = Omit<Entry, 'createdAt'> & {
+  contentHtml: string;
+};
 
-export function getAllEntries(
-  filePaths: string[] = fs.readdirSync(contentDir)
-): Entry[] {
+export function getAllEntries(filePaths: string[] = getFilePaths()): Entry[] {
   const entries = filePaths.map((filePath) => {
-    const id = filePath.replace(/\.md/, '');
+    const match: RegExpMatchArray | null =
+      /.+\/entries\/(?<date>\d\d\d\d-\d\d-\d\d)\/(?<slug>.+).md/.exec(filePath);
+
     const fullPath = path.join(contentDir, filePath);
     const entryMatter = getEntryMatter(fullPath);
 
+    assert(match?.groups);
+
+    const { date, slug } = match.groups;
+
+    assert(date);
+    assert(slug);
+
     return {
-      id,
+      date,
+      slug,
       ...entryMatter,
     };
   });
@@ -33,8 +47,29 @@ export function getAllEntries(
   return entries;
 }
 
+export function getAllEntryPathParams(
+  filePaths: string[] = getFilePaths()
+): EntryPathParams[] {
+  return filePaths.map((filePath) => {
+    const match: RegExpMatchArray | null =
+      /.+\/entries\/(?<date>\d\d\d\d-\d\d-\d\d)\/(?<slug>.+).md/.exec(filePath);
+
+    assert(match?.groups);
+
+    const { date, slug } = match.groups;
+
+    assert(date);
+    assert(slug);
+
+    return {
+      date,
+      slug,
+    };
+  });
+}
+
 export function sortEntriesByDate(entries: Entry[]): void {
-  entries.sort(({ date: a }, { date: b }) => {
+  entries.sort(({ createdAt: a }, { createdAt: b }) => {
     if (a < b) {
       return 1;
     } else if (a > b) {
@@ -45,8 +80,11 @@ export function sortEntriesByDate(entries: Entry[]): void {
   });
 }
 
-export async function getEntryById(id: string): Promise<EntryWithHtml> {
-  const fullPath = path.join(contentDir, `${id}.md`);
+export async function getEntryWithHtmlBy(
+  date: string,
+  slug: string
+): Promise<EntryWithHtml> {
+  const fullPath = path.join(contentDir, 'entries', date, `${slug}.md`);
   const entryMatter = getEntryMatter(fullPath);
 
   const processedContent = await remark()
@@ -55,10 +93,26 @@ export async function getEntryById(id: string): Promise<EntryWithHtml> {
   const contentHtml = processedContent.toString();
 
   return {
-    id,
-    ...entryMatter,
+    slug,
+    date,
+    title: entryMatter.title,
+    category: entryMatter.category,
+    content: entryMatter.content,
     contentHtml,
   };
+}
+
+function getFilePaths(): string[] {
+  const recursiveDir = (dir: string): string[] => {
+    return fs.readdirSync(dir, { withFileTypes: true }).flatMap((dirent) => {
+      const current = path.join(dir, dirent.name);
+      return dirent.isFile() ? [current] : recursiveDir(current);
+    });
+  };
+
+  const paths = recursiveDir(contentDir);
+
+  return paths.filter((p) => p.endsWith('.md'));
 }
 
 function getEntryMatter(fullPath: string): EntryMatter {
@@ -74,7 +128,7 @@ function getEntryMatter(fullPath: string): EntryMatter {
   return {
     title,
     category,
-    date,
+    createdAt: date,
     content,
   };
 }
