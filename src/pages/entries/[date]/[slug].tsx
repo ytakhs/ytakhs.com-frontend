@@ -1,26 +1,47 @@
 import React from 'react';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import Head from 'next/head';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { Layout } from '../../../components/layout';
 import {
   EntryPathParams,
-  EntryWithHtml,
+  Entry,
   getAllEntryPathParams,
-  getEntryWithHtmlBy,
+  getEntryBy,
 } from '../../../lib/entry';
 
-export default function Entry({
-  entryWithHtml,
-}: {
-  entryWithHtml: EntryWithHtml;
-}) {
+export default function EntryPage({ entry }: { entry: Entry }) {
   return (
     <Layout>
       <Head>
-        <title>{entryWithHtml.title}</title>
+        <title>{entry.title}</title>
       </Head>
       <article>
-        <h1>#{entryWithHtml.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: entryWithHtml.contentHtml }} />
+        <h1>#{entry.title}</h1>
+        <ReactMarkdown
+          components={{
+            code({ inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || '') || '';
+              return !inline ? (
+                <SyntaxHighlighter
+                  style={atomDark}
+                  language={match[1]}
+                  PreTag="div"
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+          }}
+        >
+          {entry.content}
+        </ReactMarkdown>
       </article>
     </Layout>
   );
@@ -28,11 +49,11 @@ export default function Entry({
 
 export async function getStaticProps({ params }: { params: EntryPathParams }) {
   const { date, slug } = params;
-  const entryWithHtml = await getEntryWithHtmlBy(date, slug);
+  const entry = await getEntryBy(date, slug);
 
   return {
     props: {
-      entryWithHtml,
+      entry,
     },
   };
 }

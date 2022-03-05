@@ -16,19 +16,16 @@
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.4.0",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "rehype-highlight": "^5.0.2",
-    "rehype-stringify": "^9.0.3",
-    "remark-parse": "^10.0.1",
-    "remark-rehype": "^10.1.0",
-    "unified": "^10.1.1"
+    "react-markdown": "^8.0.0",
+    "react-syntax-highlighter": "^15.4.5"
   },
   "devDependencies": {
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "autoprefixer": "^10.4.2",
