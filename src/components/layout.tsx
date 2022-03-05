@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const pcWidth = 'm-auto sm:max-w-3xl';
+const pcWidth = 'm-auto lg:max-w-3xl lg:w-full w-10/12';
 
 export function Layout({ children }: Props) {
   return (
@@ -23,7 +23,7 @@ export function Layout({ children }: Props) {
         </div>
       </header>
 
-      <main className="p-8 m-auto my-4 w-full max-w-4xl min-h-screen bg-white dark:bg-neutral-800 rounded-md shadow-md">
+      <main className="p-8 m-auto my-4 w-11/12 min-h-screen bg-white dark:bg-neutral-800 rounded-md shadow-md lg:w-full lg:max-w-4xl">
         <div className={`${pcWidth} py-4 w-full`}>{children}</div>
       </main>
       <footer className="p-8"></footer>
