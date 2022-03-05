@@ -2,8 +2,11 @@ import assert from 'assert';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import { remark } from 'remark';
-import html from 'remark-html';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeStringify from 'rehype-stringify/lib';
+import remarkParse from 'remark-parse/lib';
+import remarkRehype from 'remark-rehype';
+import { unified } from 'unified';
 
 const contentDir = path.join(process.cwd(), 'content');
 
@@ -87,8 +90,11 @@ export async function getEntryWithHtmlBy(
   const fullPath = path.join(contentDir, 'entries', date, `${slug}.md`);
   const entryMatter = getEntryMatter(fullPath);
 
-  const processedContent = await remark()
-    .use(html)
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
     .process(entryMatter.content);
   const contentHtml = processedContent.toString();
 
