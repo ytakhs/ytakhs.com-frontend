@@ -1,11 +1,19 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import { Layout } from '../components/layout';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <div></div>
+      <ul>
+        <li>Blog</li>
+        <li>
+          <Link href="https://github.com/ytakhs">
+            <a target="_blank"> GitHub</a>
+          </Link>
+        </li>
+      </ul>
     </Layout>
   );
 };

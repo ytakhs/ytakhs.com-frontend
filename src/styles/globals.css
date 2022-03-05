@@ -5,8 +5,8 @@
 @import 'highlight.js/styles/atom-one-dark.css';
 
 body {
-  @apply p-8 m-auto max-w-3xl font-sans leading-normal text-base text-left text-gray-800 break-words;
-  @apply dark:bg-slate-900 dark:text-slate-200;
+  @apply font-sans leading-normal text-base text-left text-neutral-800 break-words bg-neutral-100;
+  @apply dark:bg-neutral-900 dark:text-neutral-300;
 }
 
 p {
