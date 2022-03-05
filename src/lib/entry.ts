@@ -19,24 +19,11 @@ export type Entry = EntryMatter & EntryPathParams;
 
 export function getAllEntries(filePaths: string[] = getFilePaths()): Entry[] {
   const entries = filePaths.map((filePath) => {
-    const match: RegExpMatchArray | null =
-      /.+\/entries\/(?<date>\d\d\d\d-\d\d-\d\d)\/(?<slug>.+).md/.exec(filePath);
-
     const entryMatter = getEntryMatter(filePath);
-
-    assert(match?.groups);
-
-    const { date, slug } = match.groups;
-
-    assert(date);
-    assert(slug);
-
-    const entryPath = path.join('/entries', date, slug);
+    const entryPathParams = getEntryPathParams(filePath);
 
     return {
-      date,
-      slug,
-      path: entryPath,
+      ...entryPathParams,
       ...entryMatter,
     };
   });
@@ -47,31 +34,12 @@ export function getAllEntries(filePaths: string[] = getFilePaths()): Entry[] {
 export function getAllEntryPathParams(
   filePaths: string[] = getFilePaths()
 ): EntryPathParams[] {
-  return filePaths.map((filePath) => {
-    const match: RegExpMatchArray | null =
-      /.+\/entries\/(?<date>\d\d\d\d-\d\d-\d\d)\/(?<slug>.+).md/.exec(filePath);
-
-    assert(match?.groups);
-
-    const { date, slug } = match.groups;
-
-    assert(date);
-    assert(slug);
-
-    const entryPath = path.join('/entries', date, slug);
-
-    return {
-      date,
-      slug,
-      path: entryPath,
-    };
-  });
+  return filePaths.map(getEntryPathParams);
 }
 
 export async function getEntryBy(date: string, slug: string): Promise<Entry> {
   const fullPath = path.join(contentDir, 'entries', date, `${slug}.md`);
   const entryMatter = getEntryMatter(fullPath);
-
   const entryPath = path.join('/entries', date, slug);
 
   return {
@@ -93,6 +61,24 @@ function getFilePaths(): string[] {
   const paths = recursiveDir(contentDir);
 
   return paths.filter((p) => p.endsWith('.md'));
+}
+
+function getEntryPathParams(filePath: string): EntryPathParams {
+  const match: RegExpMatchArray | null =
+    /.+\/entries\/(?<date>\d\d\d\d-\d\d-\d\d)\/(?<slug>.+).md/.exec(filePath);
+
+  assert(match?.groups);
+
+  const { date, slug } = match.groups;
+  assert(date);
+  assert(slug);
+
+  const entryPath = path.join('/entries', date, slug);
+  return {
+    date,
+    slug,
+    path: entryPath,
+  };
 }
 
 function getEntryMatter(fullPath: string): EntryMatter {

@@ -18,7 +18,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
         <title>{entry.title}</title>
       </Head>
       <article>
-        <h1>#{entry.title}</h1>
+        <h1>{entry.title}</h1>
         <ReactMarkdown
           components={{
             code({ inline, className, children, ...props }) {
