@@ -7,7 +7,11 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <ul>
-        <li>Blog</li>
+        <li>
+          <Link href="/entries">
+            <a>Blog</a>
+          </Link>
+        </li>
         <li>
           <Link href="https://github.com/ytakhs">
             <a target="_blank"> GitHub</a>

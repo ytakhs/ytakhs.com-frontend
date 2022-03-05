@@ -13,6 +13,7 @@ export type EntryMatter = {
 export type EntryPathParams = {
   date: string;
   slug: string;
+  path: string;
 };
 export type Entry = EntryMatter & EntryPathParams;
 
@@ -21,8 +22,7 @@ export function getAllEntries(filePaths: string[] = getFilePaths()): Entry[] {
     const match: RegExpMatchArray | null =
       /.+\/entries\/(?<date>\d\d\d\d-\d\d-\d\d)\/(?<slug>.+).md/.exec(filePath);
 
-    const fullPath = path.join(contentDir, filePath);
-    const entryMatter = getEntryMatter(fullPath);
+    const entryMatter = getEntryMatter(filePath);
 
     assert(match?.groups);
 
@@ -31,9 +31,12 @@ export function getAllEntries(filePaths: string[] = getFilePaths()): Entry[] {
     assert(date);
     assert(slug);
 
+    const entryPath = path.join('/entries', date, slug);
+
     return {
       date,
       slug,
+      path: entryPath,
       ...entryMatter,
     };
   });
@@ -55,9 +58,12 @@ export function getAllEntryPathParams(
     assert(date);
     assert(slug);
 
+    const entryPath = path.join('/entries', date, slug);
+
     return {
       date,
       slug,
+      path: entryPath,
     };
   });
 }
@@ -66,9 +72,12 @@ export async function getEntryBy(date: string, slug: string): Promise<Entry> {
   const fullPath = path.join(contentDir, 'entries', date, `${slug}.md`);
   const entryMatter = getEntryMatter(fullPath);
 
+  const entryPath = path.join('/entries', date, slug);
+
   return {
     slug,
     date,
+    path: entryPath,
     ...entryMatter,
   };
 }
