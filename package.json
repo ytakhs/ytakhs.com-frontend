@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn cp-image && next build",
+    "export": "yarn build && next export",
     "start": "next start",
     "lint": "next lint",
     "fmt": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cp-image": "node scripts/copy-image.js"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",
