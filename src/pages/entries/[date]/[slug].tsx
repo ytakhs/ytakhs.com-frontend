@@ -1,4 +1,5 @@
 import React from 'react';
+import path from 'path';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import Head from 'next/head';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -48,11 +49,18 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                 );
               },
               img({ src, alt }) {
+                const imgSrc = path.join(
+                  '/entries',
+                  entry.date,
+                  entry.slug,
+                  src || ''
+                );
                 const [_alt, ...rest] = (alt || '').split(' ');
+
                 return (
                   <figure>
                     {/* eslint-disable-next-line */}
-                    <img src={src} alt={_alt} />
+                    <img src={imgSrc} alt={_alt} />
                     {rest[0] ? <figcaption>{rest[0]}</figcaption> : null}
                   </figure>
                 );
