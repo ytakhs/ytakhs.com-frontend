@@ -8,6 +8,8 @@ function recursiveDir(dir) {
   });
 }
 
+fs.rmSync(path.join('public', 'entries'), { recursive: true, force: true });
+
 recursiveDir(path.join('content', 'entries'))
   .filter((filePath) => {
     return ['.png'].includes(path.extname(filePath));
