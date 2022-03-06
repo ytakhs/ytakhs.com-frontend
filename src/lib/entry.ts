@@ -9,6 +9,7 @@ export type EntryMatter = {
   title: string;
   category: string;
   content: string;
+  createdAt: string;
 };
 export type EntryPathParams = {
   date: string;
@@ -88,14 +89,36 @@ function getEntryMatter(fullPath: string): EntryMatter {
   const fileContent = fs.readFileSync(fullPath, 'utf-8');
   const matterResult = matter(fileContent);
   const content = matterResult.content;
-  const { title, category } = matterResult.data;
+  const { title, category, date } = matterResult.data;
 
   assert(typeof title === 'string');
   assert(typeof category === 'string');
+  assert(date instanceof Date);
+
+  const createdAt = date.toString();
 
   return {
     title,
     category,
     content,
+    createdAt,
   };
+}
+
+export function sortEntryByDateDesc(entries: Entry[]): Entry[] {
+  const result = entries.slice();
+  result.sort(({ createdAt: a }, { createdAt: b }) => {
+    const aDate = Date.parse(a);
+    const bDate = Date.parse(b);
+
+    if (aDate < bDate) {
+      return 1;
+    } else if (aDate > bDate) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
+  return result;
 }

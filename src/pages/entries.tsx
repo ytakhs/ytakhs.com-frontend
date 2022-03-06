@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { Layout } from '../components/layout';
-import { Entry, getAllEntries } from '../lib/entry';
+import { Entry, getAllEntries, sortEntryByDateDesc } from '../lib/entry';
 
 export default function EntriesPage({ entries }: { entries: Entry[] }) {
   return (
@@ -24,7 +24,8 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
 }
 
 export async function getStaticProps() {
-  const entries = getAllEntries();
+  const allEntries = getAllEntries();
+  const entries = sortEntryByDateDesc(allEntries);
 
   return {
     props: {
