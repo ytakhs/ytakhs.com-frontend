@@ -47,6 +47,16 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                   </code>
                 );
               },
+              img({ src, alt }) {
+                const [_alt, ...rest] = (alt || '').split(' ');
+                return (
+                  <figure>
+                    {/* eslint-disable-next-line */}
+                    <img src={src} alt={_alt} />
+                    {rest[0] ? <figcaption>{rest[0]}</figcaption> : null}
+                  </figure>
+                );
+              },
             }}
           >
             {entry.content}
