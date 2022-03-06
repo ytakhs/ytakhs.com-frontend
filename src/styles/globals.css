@@ -4,33 +4,13 @@
 
 @import 'highlight.js/styles/atom-one-dark.css';
 
-body {
-  @apply font-sans leading-normal text-base text-left text-neutral-800 break-words bg-neutral-100;
-  @apply dark:bg-neutral-900 dark:text-neutral-300;
-}
-
-p {
-  @apply leading-relaxed py-4 tracking-wider;
-}
-
-ul {
-  @apply block list-disc pl-6 py-2;
-}
-
-li {
-  @apply list-item leading-relaxed;
-}
-
 a {
   @apply border-b;
 }
 
-pre {
-  @apply py-2;
-}
-
-pre code {
-  @apply rounded;
+body {
+  @apply font-sans leading-normal text-base text-left text-neutral-800 break-words bg-neutral-100;
+  @apply dark:bg-neutral-900 dark:text-neutral-300;
 }
 
 h1 {
@@ -55,4 +35,28 @@ h5 {
 
 h6 {
   @apply font-medium text-base leading-loose;
+}
+
+hr {
+  @apply block m-8 border-neutral-200 dark:border-neutral-600;
+}
+
+li {
+  @apply list-item leading-relaxed;
+}
+
+p {
+  @apply leading-relaxed py-4 tracking-wider;
+}
+
+pre {
+  @apply py-2;
+}
+
+pre code {
+  @apply rounded;
+}
+
+ul {
+  @apply block list-disc pl-6 py-2;
 }
