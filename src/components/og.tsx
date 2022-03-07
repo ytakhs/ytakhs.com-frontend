@@ -14,7 +14,7 @@ export function Og({ title, description, entryPath, ogType }: OgProps) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={`https://ytakhs.com${entryPath}`} />
+      <meta property="og:url" content={`https://ytakhs.com${entryPath}/`} />
       <meta property="twitter:card" content="summary" />
     </Head>
   );
