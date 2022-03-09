@@ -65,6 +65,21 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                   </figure>
                 );
               },
+              a({ href, children }) {
+                let aProps = {};
+                if (href?.startsWith('http')) {
+                  aProps = {
+                    ...{ target: '_blank', rel: 'nofollow' },
+                    ...aProps,
+                  };
+                }
+
+                return (
+                  <a href={href} {...aProps}>
+                    {children}
+                  </a>
+                );
+              },
             }}
           >
             {entry.content}
