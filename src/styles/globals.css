@@ -13,6 +13,10 @@ body {
   @apply dark:bg-neutral-900 dark:text-neutral-300;
 }
 
+code {
+  @apply bg-neutral-300 py-1 px-2 rounded dark:text-neutral-800 dark:bg-neutral-400;
+}
+
 figcaption {
   @apply text-center text-sm text-neutral-600;
 }
