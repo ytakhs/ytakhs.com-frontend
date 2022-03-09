@@ -44,7 +44,10 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                     {String(children).replace(/\n$/, '')}
                   </SyntaxHighlighter>
                 ) : (
-                  <code className={className} {...props}>
+                  <code
+                    className="py-1 px-2 dark:text-neutral-800 bg-neutral-300 dark:bg-neutral-400 rounded"
+                    {...props}
+                  >
                     {children}
                   </code>
                 );
