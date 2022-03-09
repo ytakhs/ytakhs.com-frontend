@@ -2,6 +2,7 @@ import React from 'react';
 import path from 'path';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { Layout } from '../../../components/layout';
@@ -75,9 +76,9 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                 }
 
                 return (
-                  <a href={href} {...aProps}>
-                    {children}
-                  </a>
+                  <Link href={href || ''}>
+                    <a {...aProps}>{children}</a>
+                  </Link>
                 );
               },
             }}
