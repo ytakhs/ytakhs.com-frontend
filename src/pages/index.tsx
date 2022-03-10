@@ -15,18 +15,21 @@ const Home: NextPage = () => {
       />
 
       <Layout>
-        <ul>
-          <li>
-            <Link href="/entries">
-              <a>Blog</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="https://github.com/ytakhs">
-              <a target="_blank"> GitHub</a>
-            </Link>
-          </li>
-        </ul>
+        <h1 className="hidden">ytakhs.com</h1>
+        <div className="my-4 border-y">
+          <ul className="px-2">
+            <li className="py-4">
+              <Link href="/entries">
+                <a>Blog</a>
+              </Link>
+            </li>
+            <li className="py-4">
+              <Link href="https://github.com/ytakhs">
+                <a target="_blank"> GitHub</a>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </Layout>
     </>
   );

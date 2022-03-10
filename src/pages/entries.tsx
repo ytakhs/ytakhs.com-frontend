@@ -17,6 +17,7 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
       />
 
       <Layout breadcrumb={<BreadcrumbItem href="/entries" text="entries" />}>
+        <h1>Entries</h1>
         <section>
           <List>
             {entries.map((entry, i) => {

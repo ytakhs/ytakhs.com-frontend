@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { BreadcrumbItem, BreadcrumbSep } from './breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbSep } from './breadcrumb';
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ export function Layout({ children, breadcrumb }: Props) {
 
       <header className="sticky top-0 py-4 bg-slate-100 dark:bg-slate-900">
         <div className={`${pcWidth}`}>
-          <span className="inline-block">
+          <Breadcrumb>
             <BreadcrumbItem href="/" text="ytakhs.com" />
             {breadcrumb ? (
               <>
@@ -26,7 +26,7 @@ export function Layout({ children, breadcrumb }: Props) {
                 {breadcrumb}
               </>
             ) : null}
-          </span>
+          </Breadcrumb>
         </div>
       </header>
 

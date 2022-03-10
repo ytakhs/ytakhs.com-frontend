@@ -6,9 +6,17 @@ type Props = {
   href?: string;
 };
 
+export function Breadcrumb({ children }: { children: React.ReactNode }) {
+  return (
+    <nav>
+      <ul>{children}</ul>
+    </nav>
+  );
+}
+
 export function BreadcrumbItem({ text, href }: Props) {
   return (
-    <span className="inline-block">
+    <li className="inline-block">
       {href ? (
         <Link href={href}>
           <a>{text}</a>
@@ -16,10 +24,10 @@ export function BreadcrumbItem({ text, href }: Props) {
       ) : (
         text
       )}
-    </span>
+    </li>
   );
 }
 
 export function BreadcrumbSep() {
-  return <span className="inline-block px-2">/</span>;
+  return <li className="inline-block px-2">/</li>;
 }
