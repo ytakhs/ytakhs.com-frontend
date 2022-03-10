@@ -23,8 +23,8 @@ export function Layout({ children }: Props) {
         </div>
       </header>
 
-      <main className="p-8 m-auto my-4 w-[95%] min-h-screen bg-white dark:bg-slate-800 rounded-md shadow-md lg:w-full lg:max-w-4xl">
-        <div className={`${pcWidth} py-4 w-full`}>{children}</div>
+      <main className="py-4 px-8 m-auto my-4 w-[95%] min-h-screen bg-white dark:bg-slate-800 rounded-md shadow-md sm:py-8 lg:w-full lg:max-w-4xl">
+        <div className={`${pcWidth} py-2 w-full`}>{children}</div>
       </main>
 
       <footer className="p-8"></footer>
