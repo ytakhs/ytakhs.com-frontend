@@ -45,7 +45,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                   </SyntaxHighlighter>
                 ) : (
                   <code
-                    className="py-1 px-2 dark:text-neutral-800 bg-neutral-300 dark:bg-neutral-400 rounded"
+                    className="py-1 px-2 dark:text-slate-800 bg-slate-300 dark:bg-slate-400 rounded"
                     {...props}
                   >
                     {children}

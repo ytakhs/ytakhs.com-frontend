@@ -15,7 +15,7 @@ export function Layout({ children }: Props) {
         <title>ytakhs.com</title>
       </Head>
 
-      <header className="sticky top-0 py-4 bg-white dark:bg-neutral-800 shadow">
+      <header className="sticky top-0 py-4 bg-white dark:bg-slate-800 shadow">
         <div className={`${pcWidth}`}>
           <Link href="/">
             <a>ytakhs.com</a>
@@ -23,7 +23,7 @@ export function Layout({ children }: Props) {
         </div>
       </header>
 
-      <main className="p-8 m-auto my-4 w-[95%] min-h-screen bg-white dark:bg-neutral-800 rounded-md shadow-md lg:w-full lg:max-w-4xl">
+      <main className="p-8 m-auto my-4 w-[95%] min-h-screen bg-white dark:bg-slate-800 rounded-md shadow-md lg:w-full lg:max-w-4xl">
         <div className={`${pcWidth} py-4 w-full`}>{children}</div>
       </main>
 

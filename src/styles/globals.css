@@ -9,14 +9,14 @@ a {
 }
 
 body {
-  @apply font-sans text-left text-neutral-800 break-words bg-neutral-100;
-  @apply dark:bg-neutral-900 dark:text-neutral-300;
+  @apply font-sans text-left text-slate-800 break-words bg-slate-100;
+  @apply dark:bg-slate-900 dark:text-slate-300;
   @apply text-tiny;
   @apply sm:text-base;
 }
 
 figcaption {
-  @apply text-center text-sm text-neutral-600;
+  @apply text-center text-sm text-slate-600;
 }
 
 h1 {
@@ -54,7 +54,7 @@ h6 {
 }
 
 hr {
-  @apply block m-8 border-neutral-200 dark:border-neutral-600;
+  @apply block m-8 border-slate-200 dark:border-slate-600;
 }
 
 li {
