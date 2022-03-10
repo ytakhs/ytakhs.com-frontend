@@ -4,6 +4,7 @@ import { Layout } from '../components/layout';
 import { Og } from '../components/og';
 import { Entry, getAllEntries, sortEntryByDateDesc } from '../lib/entry';
 import { List, ListItem } from '../components/list';
+import { BreadcrumbItem } from '../components/breadcrumb';
 
 export default function EntriesPage({ entries }: { entries: Entry[] }) {
   return (
@@ -15,7 +16,7 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
         entryPath="/entries"
       />
 
-      <Layout>
+      <Layout breadcrumb={<BreadcrumbItem href="/entries" text="entries" />}>
         <section>
           <List>
             {entries.map((entry, i) => {

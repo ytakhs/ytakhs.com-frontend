@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { BreadcrumbItem } from '../../../components/breadcrumb';
 import { Layout } from '../../../components/layout';
 import { Og } from '../../../components/og';
 import {
@@ -24,7 +25,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
         entryPath={entry.path}
       />
 
-      <Layout>
+      <Layout breadcrumb={<BreadcrumbItem href="/entries" text="entries" />}>
         <Head>
           <title>{entry.title}</title>
         </Head>
@@ -45,7 +46,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                   </SyntaxHighlighter>
                 ) : (
                   <code
-                    className="py-1 px-2 dark:text-slate-800 bg-slate-300 dark:bg-slate-400 rounded"
+                    className="p-1 dark:text-slate-800 bg-slate-300 dark:bg-slate-400 rounded"
                     {...props}
                   >
                     {children}
@@ -80,8 +81,20 @@ export default function EntryPage({ entry }: { entry: Entry }) {
 
                 return (
                   <Link href={href || ''}>
-                    <a {...aProps}>{children}</a>
+                    <a className="border-b" {...aProps}>
+                      {children}
+                    </a>
                   </Link>
+                );
+              },
+              ul({ children }) {
+                return (
+                  <ul className="block py-2 pl-6 list-disc">{children}</ul>
+                );
+              },
+              li({ children }) {
+                return (
+                  <li className="list-item leading-relaxed">{children}</li>
                 );
               },
             }}

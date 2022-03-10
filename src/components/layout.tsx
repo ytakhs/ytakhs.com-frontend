@@ -1,30 +1,37 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+import { BreadcrumbItem, BreadcrumbSep } from './breadcrumb';
 
 type Props = {
   children: React.ReactNode;
+  breadcrumb?: React.ReactNode;
 };
 
 const pcWidth = 'm-auto lg:max-w-3xl lg:w-full w-10/12';
 
-export function Layout({ children }: Props) {
+export function Layout({ children, breadcrumb }: Props) {
   return (
     <div className="flex flex-col">
       <Head>
         <title>ytakhs.com</title>
       </Head>
 
-      <header className="sticky top-0 py-4 bg-white dark:bg-slate-800 shadow">
+      <header className="sticky top-0 py-4 bg-slate-100 dark:bg-slate-900">
         <div className={`${pcWidth}`}>
-          <Link href="/">
-            <a>ytakhs.com</a>
-          </Link>
+          <span className="inline-block">
+            <BreadcrumbItem href="/" text="ytakhs.com" />
+            {breadcrumb ? (
+              <>
+                <BreadcrumbSep />
+                {breadcrumb}
+              </>
+            ) : null}
+          </span>
         </div>
       </header>
 
-      <main className="p-4 m-auto my-4 w-[95%] bg-white dark:bg-slate-800 rounded-md shadow-md sm:p-8 lg:w-full lg:max-w-4xl">
-        <div className={`${pcWidth} py-2 w-full`}>{children}</div>
+      <main className="px-4 m-auto w-[95%] rounded-md sm:px-8 lg:w-full lg:max-w-4xl">
+        <div className={`${pcWidth} w-full`}>{children}</div>
       </main>
 
       <footer className="p-8"></footer>
