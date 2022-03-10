@@ -23,7 +23,7 @@ export function Layout({ children }: Props) {
         </div>
       </header>
 
-      <main className="py-4 px-8 m-auto my-4 w-[95%] bg-white dark:bg-slate-800 rounded-md shadow-md sm:py-8 lg:w-full lg:max-w-4xl">
+      <main className="p-4 m-auto my-4 w-[95%] bg-white dark:bg-slate-800 rounded-md shadow-md sm:p-8 lg:w-full lg:max-w-4xl">
         <div className={`${pcWidth} py-2 w-full`}>{children}</div>
       </main>
 
