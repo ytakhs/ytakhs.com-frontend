@@ -91,19 +91,17 @@ function getEntryMatter(fullPath: string): EntryMatter {
   const fileContent = fs.readFileSync(fullPath, 'utf-8');
   const matterResult = matter(fileContent);
   const content = matterResult.content;
-  const { title, category, date } = matterResult.data;
+  const { title, category, createdAt } = matterResult.data;
 
   assert(typeof title === 'string');
   assert(typeof category === 'string');
-  assert(date instanceof Date);
-
-  const createdAt = formatISO(date);
+  assert(createdAt instanceof Date);
 
   return {
     title,
     category,
     content,
-    createdAt,
+    createdAt: formatISO(createdAt),
   };
 }
 
