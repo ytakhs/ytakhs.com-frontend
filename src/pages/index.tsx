@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import { Layout } from '../components/layout';
 import { Og } from '../components/og';
 import Link from 'next/link';
+import { ExternalLinkIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
 const Home: NextPage = () => {
   return (
@@ -22,11 +23,13 @@ const Home: NextPage = () => {
               <Link href="/entries">
                 <a>Blog</a>
               </Link>
+              <ChevronRightIcon className="inline w-5 h-5" />
             </li>
             <li className="py-4">
               <Link href="https://github.com/ytakhs">
                 <a target="_blank"> GitHub</a>
               </Link>
+              <ExternalLinkIcon className="inline w-5 h-5" />
             </li>
           </ul>
         </div>
