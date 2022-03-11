@@ -1,4 +1,5 @@
 import assert from 'assert';
+import { formatISO } from 'date-fns';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
@@ -10,6 +11,7 @@ export type EntryMatter = {
   category: string;
   content: string;
   createdAt: string;
+  updatedAt?: string;
 };
 export type EntryPathParams = {
   date: string;
@@ -95,7 +97,7 @@ function getEntryMatter(fullPath: string): EntryMatter {
   assert(typeof category === 'string');
   assert(date instanceof Date);
 
-  const createdAt = date.toString();
+  const createdAt = formatISO(date);
 
   return {
     title,

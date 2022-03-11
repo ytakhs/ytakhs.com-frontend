@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { Layout } from '../components/layout';
 import { Og } from '../components/og';
 import { Entry, getAllEntries, sortEntryByDateDesc } from '../lib/entry';
-import { List, ListItem } from '../components/list';
+import { List, ListItem, ListMeta } from '../components/list';
 import { BreadcrumbItem } from '../components/breadcrumb';
+import { Date } from '../components/date';
 
 export default function EntriesPage({ entries }: { entries: Entry[] }) {
   return (
@@ -26,6 +27,9 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
                   <Link href={entry.path}>
                     <a>{entry.title}</a>
                   </Link>
+                  <ListMeta>
+                    <Date dateString={entry.createdAt} />
+                  </ListMeta>
                 </ListItem>
               );
             })}

@@ -14,6 +14,7 @@ import {
   getAllEntryPathParams,
   getEntryBy,
 } from '../../../lib/entry';
+import { Date } from '../../../components/date';
 
 export default function EntryPage({ entry }: { entry: Entry }) {
   return (
@@ -31,6 +32,10 @@ export default function EntryPage({ entry }: { entry: Entry }) {
         </Head>
         <article>
           <h1>{entry.title}</h1>
+          <div className="text-sm text-slate-600 dark:text-slate-400">
+            <span className="pr-2">Created at:</span>
+            <Date dateString={entry.createdAt}></Date>
+          </div>
           <ReactMarkdown
             components={{
               code({ inline, className, children, ...props }) {
