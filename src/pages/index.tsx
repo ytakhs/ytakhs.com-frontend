@@ -17,28 +17,26 @@ const Home: NextPage = () => {
 
       <Layout>
         <h1 className="hidden">ytakhs.com</h1>
-        <div className="my-4">
-          <ul className="px-2">
-            <li>
-              <Link href="/entries">
-                <a>
-                  <div className="py-4 border-b">
-                    Blog <ChevronRightIcon className="inline w-5 h-5" />
-                  </div>
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="https://github.com/ytakhs">
-                <a target="_blank">
-                  <div className="py-4 border-b">
-                    GitHub <ExternalLinkIcon className="inline w-5 h-5" />
-                  </div>
-                </a>
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <ul>
+          <li>
+            <Link href="/entries">
+              <a>
+                <div className="py-4 border-b">
+                  Blog <ChevronRightIcon className="inline w-5 h-5" />
+                </div>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="https://github.com/ytakhs">
+              <a target="_blank">
+                <div className="py-4 border-b">
+                  GitHub <ExternalLinkIcon className="inline w-5 h-5" />
+                </div>
+              </a>
+            </Link>
+          </li>
+        </ul>
       </Layout>
     </>
   );
