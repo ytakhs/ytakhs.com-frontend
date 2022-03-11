@@ -7,8 +7,6 @@ type Props = {
   breadcrumb?: React.ReactNode;
 };
 
-const pcWidth = 'm-auto lg:max-w-3xl lg:w-full w-10/12';
-
 export function Layout({ children, breadcrumb }: Props) {
   return (
     <div className="flex flex-col">
@@ -17,7 +15,7 @@ export function Layout({ children, breadcrumb }: Props) {
       </Head>
 
       <header className="sticky top-0 py-4 bg-slate-50 dark:bg-slate-900">
-        <div className={`${pcWidth}`}>
+        <div className="px-4 m-auto w-[95%] lg:px-0 lg:w-full lg:max-w-3xl">
           <Breadcrumb>
             <BreadcrumbItem href="/" text="ytakhs.com" />
             {breadcrumb ? (
@@ -30,8 +28,8 @@ export function Layout({ children, breadcrumb }: Props) {
         </div>
       </header>
 
-      <main className="px-4 m-auto w-[95%] rounded-md sm:px-8 lg:w-full lg:max-w-4xl">
-        <div className={`${pcWidth} w-full`}>{children}</div>
+      <main className="px-4 m-auto w-[95%] rounded-md lg:w-full lg:max-w-4xl">
+        <div className="m-auto w-full lg:max-w-3xl">{children}</div>
       </main>
 
       <footer className="p-8"></footer>
