@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Layout } from '../components/layout';
 import { Og } from '../components/og';
 import { Entry, getAllEntries, sortEntryByDateDesc } from '../lib/entry';
-import { List, ListItem, ListMeta } from '../components/list';
 import { BreadcrumbItem } from '../components/breadcrumb';
 import { Date } from '../components/date';
 
@@ -20,20 +19,24 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
       <Layout breadcrumb={<BreadcrumbItem href="/entries" text="entries" />}>
         <h1>Entries</h1>
         <section>
-          <List>
+          <ul>
             {entries.map((entry, i) => {
               return (
-                <ListItem key={i}>
+                <li key={i}>
                   <Link href={entry.path}>
-                    <a>{entry.title}</a>
+                    <a>
+                      <div className="py-4 border-b">
+                        {entry.title}
+                        <div className="text-sm text-slate-600 dark:text-slate-400">
+                          <Date dateString={entry.createdAt} />
+                        </div>
+                      </div>
+                    </a>
                   </Link>
-                  <ListMeta>
-                    <Date dateString={entry.createdAt} />
-                  </ListMeta>
-                </ListItem>
+                </li>
               );
             })}
-          </List>
+          </ul>
         </section>
       </Layout>
     </>
