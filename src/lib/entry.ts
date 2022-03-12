@@ -8,10 +8,10 @@ const contentDir = path.join(process.cwd(), 'content');
 
 export type EntryMatter = {
   title: string;
+  description: string | null;
   category: string;
   content: string;
   createdAt: string;
-  updatedAt?: string;
 };
 export type EntryPathParams = {
   date: string;
@@ -91,7 +91,7 @@ function getEntryMatter(fullPath: string): EntryMatter {
   const fileContent = fs.readFileSync(fullPath, 'utf-8');
   const matterResult = matter(fileContent);
   const content = matterResult.content;
-  const { title, category, createdAt } = matterResult.data;
+  const { title, description, category, createdAt } = matterResult.data;
 
   assert(typeof title === 'string');
   assert(typeof category === 'string');
@@ -99,6 +99,7 @@ function getEntryMatter(fullPath: string): EntryMatter {
 
   return {
     title,
+    description: description || null,
     category,
     content,
     createdAt: formatISO(createdAt),

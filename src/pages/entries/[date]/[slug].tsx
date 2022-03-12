@@ -21,7 +21,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
     <>
       <Og
         title={entry.title}
-        description={entry.title}
+        description={entry.description || entry.title}
         ogType="article"
         entryPath={entry.path}
       />
