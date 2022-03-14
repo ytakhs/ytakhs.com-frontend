@@ -93,9 +93,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
                 );
               },
               ul({ children }) {
-                return (
-                  <ul className="block py-2 pl-6 list-disc">{children}</ul>
-                );
+                return <ul className="block pl-6 list-disc">{children}</ul>;
               },
               li({ children }) {
                 return (

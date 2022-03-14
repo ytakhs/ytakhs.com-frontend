@@ -58,7 +58,7 @@ li {
 }
 
 p {
-  @apply leading-relaxed py-4 tracking-wider;
+  @apply leading-relaxed py-3 tracking-wider;
 }
 
 pre {
