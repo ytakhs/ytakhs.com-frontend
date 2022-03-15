@@ -54,7 +54,11 @@ hr {
 }
 
 li {
-  @apply list-item leading-relaxed;
+  @apply py-1.5 list-item leading-relaxed;
+}
+
+li p {
+  @apply py-1;
 }
 
 p {

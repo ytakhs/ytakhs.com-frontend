@@ -95,11 +95,6 @@ export default function EntryPage({ entry }: { entry: Entry }) {
               ul({ children }) {
                 return <ul className="block pl-6 list-disc">{children}</ul>;
               },
-              li({ children }) {
-                return (
-                  <li className="list-item leading-relaxed">{children}</li>
-                );
-              },
             }}
           >
             {entry.content}
