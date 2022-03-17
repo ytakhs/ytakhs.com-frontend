@@ -28,7 +28,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
           <title>{entry.title}</title>
         </Head>
         <article>
-          <h1>{entry.title}</h1>
+          <h1 className="py-4">{entry.title}</h1>
           <div className="text-sm text-slate-600 dark:text-slate-400">
             <span className="pr-2">Created at:</span>
             <Date dateString={entry.createdAt}></Date>
