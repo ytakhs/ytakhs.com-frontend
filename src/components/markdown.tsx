@@ -29,7 +29,7 @@ export function Markdown({ rawMd, imgPrefix, headingWithAnchor }: Props) {
             </SyntaxHighlighter>
           ) : (
             <code
-              className="py-0.5 px-1 dark:text-slate-800 bg-slate-300 dark:bg-slate-400 rounded"
+              className="py-0.5 px-1 dark:text-neutral-800 bg-neutral-300 dark:bg-neutral-400 rounded"
               {...props}
             >
               {children}

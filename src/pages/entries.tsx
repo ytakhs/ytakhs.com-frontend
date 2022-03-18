@@ -27,7 +27,7 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
                     <a>
                       <div className="py-4 border-b">
                         {entry.title}
-                        <div className="text-sm text-slate-600 dark:text-slate-400">
+                        <div className="text-sm text-neutral-600 dark:text-neutral-400">
                           <Date dateString={entry.createdAt} />
                         </div>
                       </div>

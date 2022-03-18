@@ -14,7 +14,7 @@ export function Layout({ children, breadcrumb }: Props) {
         <title>ytakhs.com</title>
       </Head>
 
-      <header className="sticky top-0 py-4 bg-slate-50 dark:bg-slate-900">
+      <header className="sticky top-0 py-4 bg-neutral-50 dark:bg-neutral-900">
         <div className="px-4 m-auto w-[95%] lg:px-0 lg:w-full lg:max-w-3xl">
           <Breadcrumb>
             <BreadcrumbItem href="/" text="ytakhs.com" />
