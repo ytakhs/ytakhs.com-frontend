@@ -68,6 +68,13 @@ export function Markdown({ rawMd, imgPrefix, headingWithAnchor }: Props) {
             </Link>
           );
         },
+        blockquote({ children }) {
+          return (
+            <blockquote className="pl-3 ml-2 rounded-l-sm border-l-4 border-neutral-400">
+              {children}
+            </blockquote>
+          );
+        },
         ul({ children }) {
           return <ul className="block pl-6 list-disc">{children}</ul>;
         },
