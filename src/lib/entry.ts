@@ -12,6 +12,7 @@ export type EntryMatter = {
   category: string;
   content: string;
   createdAt: string;
+  draft: boolean | null;
 };
 export type EntryPathParams = {
   date: string;
@@ -21,15 +22,17 @@ export type EntryPathParams = {
 export type Entry = EntryMatter & EntryPathParams;
 
 export function getAllEntries(filePaths: string[] = getFilePaths()): Entry[] {
-  const entries = filePaths.map((filePath) => {
-    const entryMatter = getEntryMatter(filePath);
-    const entryPathParams = getEntryPathParams(filePath);
+  const entries = filePaths
+    .map((filePath) => {
+      const entryMatter = getEntryMatter(filePath);
+      const entryPathParams = getEntryPathParams(filePath);
 
-    return {
-      ...entryPathParams,
-      ...entryMatter,
-    };
-  });
+      return {
+        ...entryPathParams,
+        ...entryMatter,
+      };
+    })
+    .filter((entry) => !entry.draft);
 
   return entries;
 }
@@ -37,7 +40,13 @@ export function getAllEntries(filePaths: string[] = getFilePaths()): Entry[] {
 export function getAllEntryPathParams(
   filePaths: string[] = getFilePaths()
 ): EntryPathParams[] {
-  return filePaths.map(getEntryPathParams);
+  return getAllEntries(filePaths).map(({ date, slug, path }) => {
+    return {
+      date,
+      slug,
+      path,
+    };
+  });
 }
 
 export async function getEntryBy(date: string, slug: string): Promise<Entry> {
@@ -91,7 +100,7 @@ function getEntryMatter(fullPath: string): EntryMatter {
   const fileContent = fs.readFileSync(fullPath, 'utf-8');
   const matterResult = matter(fileContent);
   const content = matterResult.content;
-  const { title, description, category, createdAt } = matterResult.data;
+  const { title, description, category, createdAt, draft } = matterResult.data;
 
   assert(typeof title === 'string');
   assert(typeof category === 'string');
@@ -103,6 +112,7 @@ function getEntryMatter(fullPath: string): EntryMatter {
     category,
     content,
     createdAt: formatISO(createdAt),
+    draft: draft || null,
   };
 }
 
