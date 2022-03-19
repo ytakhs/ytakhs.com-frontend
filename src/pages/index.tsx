@@ -21,8 +21,10 @@ const Home: NextPage = () => {
           <li>
             <Link href="/entries">
               <a>
-                <div className="py-4 border-b">
-                  Blog <ChevronRightIcon className="inline w-5 h-5" />
+                <div className="py-4 border-b ">
+                  <span className="inline-flex items-center">
+                    Blog <ChevronRightIcon className="mx-2 w-5 h-5" />
+                  </span>
                 </div>
               </a>
             </Link>
@@ -31,7 +33,9 @@ const Home: NextPage = () => {
             <Link href="https://github.com/ytakhs">
               <a target="_blank">
                 <div className="py-4 border-b">
-                  GitHub <ExternalLinkIcon className="inline w-5 h-5" />
+                  <span className="inline-flex items-center">
+                    GitHub <ExternalLinkIcon className="mx-2 w-5 h-5" />
+                  </span>
                 </div>
               </a>
             </Link>

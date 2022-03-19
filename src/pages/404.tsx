@@ -20,7 +20,7 @@ export default function Page404() {
           <Link href="/">
             <a>
               <span className="inline-flex items-center">
-                <ChevronLeftIcon className="w-4 h-4" />
+                <ChevronLeftIcon className="mx-2 w-5 h-5" />
                 Back to Top
               </span>
             </a>
