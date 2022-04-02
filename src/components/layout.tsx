@@ -12,6 +12,13 @@ export function Layout({ children, breadcrumb }: Props) {
     <div className="flex flex-col">
       <Head>
         <title>ytakhs.com</title>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/images/favicon-apple-touch.png"
+        />
+        <link rel="icon" href="/images/favicon-48.png" type="image/png" />
+        <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
       </Head>
 
       <header className="sticky top-0 py-4 bg-neutral-50 dark:bg-neutral-900">
