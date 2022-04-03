@@ -23,7 +23,18 @@ const Home: NextPage = () => {
               <a>
                 <div className="py-4 border-b ">
                   <span className="inline-flex items-center">
-                    Blog <ChevronRightIcon className="mx-2 w-5 h-5" />
+                    Writing <ChevronRightIcon className="mx-2 w-5 h-5" />
+                  </span>
+                </div>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/profile">
+              <a>
+                <div className="py-4 border-b ">
+                  <span className="inline-flex items-center">
+                    Profile <ChevronRightIcon className="mx-2 w-5 h-5" />
                   </span>
                 </div>
               </a>
@@ -35,6 +46,17 @@ const Home: NextPage = () => {
                 <div className="py-4 border-b">
                   <span className="inline-flex items-center">
                     GitHub <ExternalLinkIcon className="mx-2 w-5 h-5" />
+                  </span>
+                </div>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="https://twitter.com/ytakhs">
+              <a target="_blank">
+                <div className="py-4 border-b">
+                  <span className="inline-flex items-center">
+                    Twitter <ExternalLinkIcon className="mx-2 w-5 h-5" />
                   </span>
                 </div>
               </a>

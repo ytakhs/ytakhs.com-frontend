@@ -4,6 +4,7 @@ import { Layout } from '../components/layout';
 import { Markdown } from '../components/markdown';
 
 const rawMd = `
+**WIP**
 `;
 
 export default function Profile() {
