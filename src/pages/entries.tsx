@@ -10,14 +10,14 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
   return (
     <>
       <Og
-        title="Entries | ytakhs.com"
-        description="Entries | ytakhs.com"
+        title="Writing | ytakhs.com"
+        description="Writing | ytakhs.com"
         ogType="website"
         entryPath="/entries"
       />
 
       <Layout breadcrumb={<BreadcrumbItem href="/entries" text="entries" />}>
-        <h1>Entries</h1>
+        <h1>Writing</h1>
         <section>
           <ul>
             {entries.map((entry, i) => {
