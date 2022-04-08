@@ -23,7 +23,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
         entryPath={entry.path}
       />
 
-      <Layout breadcrumb={<BreadcrumbItem href="/entries" text="entries" />}>
+      <Layout breadcrumb={<BreadcrumbItem href="/entries" text="writing" />}>
         <Head>
           <title>{entry.title}</title>
         </Head>
