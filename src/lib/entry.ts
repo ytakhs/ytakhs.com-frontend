@@ -9,7 +9,6 @@ const contentDir = path.join(process.cwd(), 'content');
 export type EntryMatter = {
   title: string;
   description: string | null;
-  category: string;
   content: string;
   createdAt: string;
   draft: boolean | null;
@@ -100,16 +99,14 @@ function getEntryMatter(fullPath: string): EntryMatter {
   const fileContent = fs.readFileSync(fullPath, 'utf-8');
   const matterResult = matter(fileContent);
   const content = matterResult.content;
-  const { title, description, category, createdAt, draft } = matterResult.data;
+  const { title, description, createdAt, draft } = matterResult.data;
 
   assert(typeof title === 'string');
-  assert(typeof category === 'string');
   assert(createdAt instanceof Date);
 
   return {
     title,
     description: description || null,
-    category,
     content,
     createdAt: formatISO(createdAt),
     draft: draft || null,
