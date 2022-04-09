@@ -28,15 +28,17 @@ export default function EntryPage({ entry }: { entry: Entry }) {
           <title>{entry.title}</title>
         </Head>
         <article>
-          <h1 className="py-4">{entry.title}</h1>
+          <h1 className="pt-3 pb-1">{entry.title}</h1>
           <div className="text-sm text-neutral-600 dark:text-neutral-400">
             <span className="pr-2">Created at:</span>
             <Date dateString={entry.createdAt}></Date>
           </div>
-          <Markdown
-            rawMd={entry.content}
-            imgPrefix={path.join('/entries', entry.date, entry.slug)}
-          />
+          <div className="py-2">
+            <Markdown
+              rawMd={entry.content}
+              imgPrefix={path.join('/entries', entry.date, entry.slug)}
+            />
+          </div>
         </article>
       </Layout>
     </>
