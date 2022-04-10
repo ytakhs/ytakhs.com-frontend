@@ -2,7 +2,7 @@ import assert from 'assert';
 import { formatISO } from 'date-fns';
 import fs from 'fs';
 import matter from 'gray-matter';
-import path from 'path';
+import path, { posix } from 'path';
 
 const contentDir = path.join(process.cwd(), 'content');
 
@@ -87,7 +87,7 @@ function getEntryPathParams(filePath: string): EntryPathParams {
   assert(date);
   assert(slug);
 
-  const entryPath = path.join('/entries', date, slug);
+  const entryPath = posix.join('/entries', date, slug);
   return {
     date,
     slug,

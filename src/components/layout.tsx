@@ -19,6 +19,11 @@ export function Layout({ children, breadcrumb }: Props) {
         />
         <link rel="icon" href="/images/favicon-48.png" type="image/png" />
         <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+        <link
+          rel="alternate"
+          href="/feeds/atom.xml"
+          type="application/atom+xml"
+        />
       </Head>
 
       <header className="sticky top-0 py-4 bg-neutral-50 dark:bg-neutral-900">

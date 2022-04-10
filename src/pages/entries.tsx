@@ -5,6 +5,7 @@ import { Og } from '../components/og';
 import { Entry, getAllEntries, sortEntryByDateDesc } from '../lib/entry';
 import { BreadcrumbItem } from '../components/breadcrumb';
 import { Date } from '../components/date';
+import { createAtomFeedFile } from '../lib/feed';
 
 export default function EntriesPage({ entries }: { entries: Entry[] }) {
   return (
@@ -46,6 +47,8 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
 export async function getStaticProps() {
   const allEntries = getAllEntries();
   const entries = sortEntryByDateDesc(allEntries);
+
+  createAtomFeedFile(entries);
 
   return {
     props: {
