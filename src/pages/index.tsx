@@ -23,7 +23,7 @@ const Home: NextPage = () => {
               <a>
                 <div className="py-4 border-b ">
                   <span className="inline-flex items-center">
-                    Writing <ChevronRightIcon className="mx-2 w-5 h-5" />
+                    Writings <ChevronRightIcon className="mx-2 w-5 h-5" />
                   </span>
                 </div>
               </a>
