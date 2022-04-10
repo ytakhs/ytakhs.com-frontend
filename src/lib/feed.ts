@@ -40,7 +40,7 @@ function createAtomFeed(sortedEntries: ReadonlyArray<Entry>): string {
 }
 
 function createAtomEntry(entry: Entry): XmlObject {
-  const permalink = new URL(entry.path, homeURL).href;
+  const permalink = new URL(entry.path, homeURL).href + '/';
 
   return {
     entry: [
