@@ -40,3 +40,4 @@ yarn-error.log*
 /content
 /public/entries
 /public/feeds
+.env.local

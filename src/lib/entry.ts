@@ -4,7 +4,10 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path, { posix } from 'path';
 
-const contentDir = path.join(process.cwd(), 'content');
+const contentDir = path.join(
+  process.cwd(),
+  process.env.CONTENT_DIR || 'content'
+);
 
 export type EntryMatter = {
   title: string;
