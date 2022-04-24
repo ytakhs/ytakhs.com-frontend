@@ -4,7 +4,6 @@ import { Layout } from '../components/layout';
 import { Og } from '../components/og';
 import Link from 'next/link';
 import { ExternalLinkIcon, ChevronRightIcon } from '@heroicons/react/solid';
-import Image from 'next/image';
 import { H2 } from '../components/heading';
 
 const Home: NextPage = () => {
@@ -20,17 +19,15 @@ const Home: NextPage = () => {
         <h1 className="hidden">ytakhs.com</h1>
         <div className="flex justify-start">
           <figure className="block px-2 w-full max-w-[30%] h-full max-h-[30%]">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               className="static rounded-full"
-              layout="responsive"
-              width={256}
-              height={256}
               src="/images/icon.svg"
               alt="icon"
             />
           </figure>
           <div className="px-4 m-auto w-full">
-            <H2 style={{ padding: 0 }}>About</H2>
+            <H2 style={{ padding: 0 }}>About me</H2>
             <p>@ytakhs</p>
           </div>
         </div>
