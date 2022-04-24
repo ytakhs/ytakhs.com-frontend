@@ -1,5 +1,6 @@
 import React from 'react';
 import { BreadcrumbItem } from '../components/breadcrumb';
+import { H1 } from '../components/heading';
 import { Layout } from '../components/layout';
 import { Markdown } from '../components/markdown';
 
@@ -11,7 +12,7 @@ export default function Profile() {
   return (
     <>
       <Layout breadcrumb={<BreadcrumbItem href="/profile" text="profile" />}>
-        <h1>Profile</h1>
+        <H1>Profile</H1>
         <article>
           <Markdown rawMd={rawMd} />
         </article>

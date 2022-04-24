@@ -12,6 +12,7 @@ import {
 } from '../../../lib/entry';
 import { Date } from '../../../components/date';
 import { Markdown } from '../../../components/markdown';
+import { H1 } from '../../../components/heading';
 
 export default function EntryPage({ entry }: { entry: Entry }) {
   return (
@@ -28,7 +29,7 @@ export default function EntryPage({ entry }: { entry: Entry }) {
           <title>{entry.title}</title>
         </Head>
         <article>
-          <h1 className="pt-3 pb-1">{entry.title}</h1>
+          <H1>{entry.title}</H1>
           <div className="text-sm text-neutral-600 dark:text-neutral-400">
             <span className="pr-2">Created at:</span>
             <Date dateString={entry.createdAt}></Date>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { Layout } from '../components/layout';
 import { Og } from '../components/og';
+import { H1 } from '../components/heading';
 
 export default function Page404() {
   return (
@@ -14,7 +15,7 @@ export default function Page404() {
         entryPath="/404"
       />
       <Layout>
-        <h1>404 - Page Not Found</h1>
+        <H1>404 - Page Not Found</H1>
 
         <p>
           <Link href="/">

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Heading } from './heading';
+import { H1, H2, H3, H4, H5, H6 } from './heading';
 
 type Props = {
   rawMd: string;
@@ -79,30 +79,28 @@ export function Markdown({ rawMd, imgPrefix, headingWithAnchor }: Props) {
           return <ul className="block pl-6 list-disc">{children}</ul>;
         },
         h1({ children }) {
-          return Heading({
-            as: 'h1',
+          return H1({
             children,
             hasAnchor: headingWithAnchor || true,
           });
         },
         h2({ children }) {
-          return Heading({
-            as: 'h2',
+          return H2({
             children,
             hasAnchor: headingWithAnchor || true,
           });
         },
         h3({ children }) {
-          return Heading({ as: 'h3', children });
+          return H3({ children });
         },
         h4({ children }) {
-          return Heading({ as: 'h4', children });
+          return H4({ children });
         },
         h5({ children }) {
-          return Heading({ as: 'h5', children });
+          return H5({ children });
         },
         h6({ children }) {
-          return Heading({ as: 'h6', children });
+          return H6({ children });
         },
       }}
     >

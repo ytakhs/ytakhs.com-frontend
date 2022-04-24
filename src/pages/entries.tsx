@@ -6,6 +6,7 @@ import { Entry, getAllEntries, sortEntryByDateDesc } from '../lib/entry';
 import { BreadcrumbItem } from '../components/breadcrumb';
 import { Date } from '../components/date';
 import { createAtomFeedFile } from '../lib/feed';
+import { H1 } from '../components/heading';
 
 export default function EntriesPage({ entries }: { entries: Entry[] }) {
   return (
@@ -18,7 +19,7 @@ export default function EntriesPage({ entries }: { entries: Entry[] }) {
       />
 
       <Layout breadcrumb={<BreadcrumbItem href="/entries" text="writings" />}>
-        <h1>Writings</h1>
+        <H1>Writings</H1>
         <section>
           <ul>
             {entries.map((entry, i) => {

@@ -15,40 +15,6 @@ figcaption {
   @apply text-center text-sm text-neutral-600;
 }
 
-h1 {
-  @apply font-medium tracking-wide py-3 leading-tight;
-  @apply text-2xl;
-  @apply sm:text-3xl;
-}
-
-h2 {
-  @apply font-medium tracking-wide py-3 leading-tight;
-  @apply text-xl;
-  @apply sm:text-2xl;
-}
-
-h3 {
-  @apply font-medium py-3;
-  @apply text-lg;
-  @apply sm:text-xl;
-}
-
-h4 {
-  @apply font-medium py-2;
-  @apply text-base;
-  @apply sm:text-xl;
-}
-
-h5 {
-  @apply font-medium py-1;
-  @apply text-tiny;
-  @apply sm:text-base;
-}
-
-h6 {
-  @apply font-medium text-base py-1;
-}
-
 hr {
   @apply block m-8 border-slate-200 dark:border-slate-600;
 }
