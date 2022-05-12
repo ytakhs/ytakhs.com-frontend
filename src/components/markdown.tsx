@@ -23,7 +23,6 @@ export function Markdown({ rawMd, imgPrefix, headingWithAnchor }: Props) {
               style={atomDark}
               language={match[1]}
               PreTag="div"
-              {...props}
             >
               {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>
